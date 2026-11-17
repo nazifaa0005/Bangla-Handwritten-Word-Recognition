@@ -9,8 +9,6 @@ import tensorflow as tf
 from segment_word import segment_word
 from utils import preprocess_image
 
-
-# Use the completed 25-epoch model while the 50-epoch model trains.
 MODEL_PATH = Path("models/model.keras")
 IMAGE_FOLDER = Path("segmentation_tests")
 MAPPING_PATH = Path("character_map.json")

@@ -64,7 +64,7 @@ print("Last label:", labels[-1])
 
 
 
-#Split our dataset-------------------------------------------------------------------------------
+#Split dataset-------------------------------------------------------------------------------
 
 from sklearn.model_selection import train_test_split
 
@@ -99,11 +99,11 @@ BATCH_SIZE = 32
 
 
 def load_image(path, label):
-    # Read and decode the PNG image as grayscale.
+
     image_bytes = tf.io.read_file(path)
     image = tf.image.decode_png(image_bytes, channels=1)
 
-    # Use our shared preprocessing function.
+    # Use shared preprocessing function.
     image = preprocess_image(image)
 
     return image, label
@@ -190,10 +190,8 @@ print("CNN compiled successfully!")
 
 import mlflow
 
-# Tell MLflow where to store experiment records.
 mlflow.set_tracking_uri("sqlite:///mlflow.db")
 
-# Create or select our experiment.
 mlflow.set_experiment("Bangla_Character_Recognition")
 
 print("MLflow configured successfully!")

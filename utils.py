@@ -3,13 +3,11 @@ import tensorflow as tf
 
 
 def preprocess_image(image):
-    # Convert pixels to float values.
+    
     image = tf.cast(image, tf.float32)
 
-    # Find the non-black pixels (handwriting).
     ink = tf.where(tf.reduce_any(image > 0, axis=-1))
 
-    # Crop away empty space if handwriting exists.
     def crop_to_ink():
         top_left = tf.reduce_min(ink, axis=0)
         bottom_right = tf.reduce_max(ink, axis=0) + 1
@@ -48,11 +46,7 @@ def preprocess_image(image):
 
 
 def remove_matra(image):
-    """Remove long upper horizontal strokes from a 48x48 image.
 
-    Experimental augmentation, not guaranteed to remove only matra.
-    Expects pixel values in the range 0 to 1.
-    """
     import cv2
     import numpy as np
 
@@ -107,15 +101,12 @@ def remove_matra(image):
 if __name__ == "__main__":
     from pathlib import Path
 
-    # Find one sample image from class 1.
     image_path = next(Path("data/BanglaLekha-Isolated/Images/39").glob("*.png"))
     
-
-    # Read the original grayscale image.
     image_bytes = tf.io.read_file(str(image_path))
     image = tf.image.decode_png(image_bytes, channels=1)
 
-    # Apply our shared preprocessing function.
+    # Apply shared preprocessing function.
     processed = preprocess_image(image)
 
     print("Original shape:", image.shape)
