@@ -1,0 +1,33 @@
+# Local Python environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Training datasets
+data/
+dataset/
+
+# MLflow records
+mlflow.db
+mlruns/
+mlartifacts/
+mlflow1.err
+mlflow1.out
+
+# Training logs
+*.log
+
+# Exclude other model checkpoints
+*.keras
+!models/
+!models/model.keras
+
+# Test images and development artifacts
+segmentation_tests/
+screenshots/
+*.pdf
+experimental_runs/
+
+# Git metadata
+.git/
