@@ -1,0 +1,33 @@
+# Python environment and cache
+.venv/
+__pycache__/
+*.pyc
+
+# Training dataset
+data/
+
+# Local experiments and testing
+segmentation_tests/
+*.log
+mlflow.db
+mlflow1.err
+mlflow1.out
+mlruns/
+mlartifacts/
+
+# Temporary model files
+*.backup.keras
+*_checkpoint.keras
+*_quick.keras
+
+# Keep the selected model only in models/
+*.keras
+!models/
+!models/model.keras
+
+# System files
+.DS_Store
+Thumbs.db
+
+# New training experiments
+experimental_runs/
